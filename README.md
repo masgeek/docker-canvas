@@ -11,7 +11,7 @@ Docker provisioning for Canvas integration tests (via LTI, etc)
 
 ### Clone Repo and Start Server
 
-    git clone https://github.com/ubc/docker-canvas.git docker-canvas
+    git clone https://github.com/masgeek/docker-canvas.git docker-canvas
 
 ### If it is the first time:
 

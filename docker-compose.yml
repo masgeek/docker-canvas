@@ -20,7 +20,7 @@ services:
     ports:
       - "8901:8025"
   app: &app
-    image: docker-canvas
+    image: mycanvas
     build: .
     command: bash -c "./wait-for-it.sh -t 40 db:5432 && /usr/src/entrypoint"
     environment:
