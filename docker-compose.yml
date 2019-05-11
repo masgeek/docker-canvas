@@ -7,14 +7,14 @@ services:
       - POSTGRES_PASSWORD=canvas
       - POSTGRES_DB=canvas
     volumes:
-      - ./.mydata/postgres:/var/lib/postgresql/data
+      - ./.data/postgres:/var/lib/postgresql/data
     ports:
       - "15432:5432"
   redis:
     image: redis:alpine
     command: redis-server --appendonly yes
     volumes:
-      - ./.mydata/redis:/data
+      - ./.data/redis:/data
   mail:
     image: mailhog/mailhog:v1.0.0
     ports:
@@ -41,7 +41,7 @@ services:
       - MAIL_DEFAULT_SENDER_ADDRESS=canvas@example.com
       - MAIL_DEFAULT_SENDER_NAME=Canvas Admin
     volumes:
-      - ./.mydata/public/dist/brandable_css:/usr/src/app/public/dist/brandable_css
+      - ./.data/public/dist/brandable_css:/usr/src/app/public/dist/brandable_css
       - ./deploy/database.yml:/usr/src/app/config/database.yml:ro
       - ./deploy/redis.yml:/usr/src/app/config/redis.yml:ro
       - ./deploy/cache.yml:/usr/src/app/config/cache.yml:ro
@@ -51,7 +51,7 @@ services:
       - ./deploy/domain.yml:/usr/src/app/config/domain.yml:ro
       - ./deploy/development-local.rb:/usr/src/app/config/environments/development-local.rb:ro
       - ./wait-for-it.sh:/usr/src/app/wait-for-it.sh:ro
-      - ./.mydata/tmp:/usr/src/app/tmp
+      - ./.data/tmp:/usr/src/app/tmp
     ports:
       - "8900:80"
     depends_on:
